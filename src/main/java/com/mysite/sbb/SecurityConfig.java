@@ -12,10 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 @Configuration //이 파일이 스프링의 환경 설정 파일임을 의미하는 애너테이션이다.
 @EnableWebSecurity //모든 요청 URL이 스프링 시큐리티의 제어를 받도록 만드는 애너테이션이다.
 //이 애너테이션을 사용하면 스프링 시큐리티를 활성화하는 역할을 한다. 내부적으로 SecurityFilterChain 클래스가 동작하여 모든 요청 URL에 이 클래스가 필터로 적용되어 URL별로 특별한 설정을 할 수 있게 된다.
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	@Bean //스프링 시큐리티의 세부 설정은 @Bean 애너테이션을 통해 SecurityFilterChain 빈을 생성하여 설정할 수 있다.
 	/*
