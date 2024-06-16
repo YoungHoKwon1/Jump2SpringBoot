@@ -22,7 +22,9 @@ import com.mysite.sbb.user.UserService;
 import jakarta.validation.Valid;
 // import org.springframework.web.bind.annotation.RequestParam;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequestMapping("/question")
 @RequiredArgsConstructor
 @Controller
@@ -36,6 +38,7 @@ public class QuestionController {
 			@RequestParam(value = "kw", defaultValue = "") String kw) {
 		// List<Question> questionList = this.questionService.getList();
 		// model.addAttribute("questionList", questionList);
+		log.info("page:{}, kw:{}", page, kw);
 		Page<Question> paging = this.questionService.getList(page, kw);
 		model.addAttribute("paging", paging);
 		model.addAttribute("kw", kw);
